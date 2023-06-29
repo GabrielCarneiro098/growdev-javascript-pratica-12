@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const data = [
+        {
+          nome: "Roger Medeiros",
+          sexo: "M",
+          salario: 3250,
+        },
+        {
+          nome: "Carolina Silva",
+          sexo: "F",
+          salario: 1200,
+        },
+        {
+          nome: "Cristina Avila",
+          sexo: "F",
+          salario: 8100,
+        },
+        {
+          nome: "Gustavo Hoffman",
+          sexo: "M",
+          salario: 5200.35,
+        },
+        {
+          nome: "Eva Trindade",
+          sexo: "F",
+          salario: 2501,
+        },
+        {
+          nome: "Andre Mathias",
+          sexo: "M",
+          salario: 1750,
+        },
+        {
+          nome: "Joice Castro da Silva",
+          sexo: "F",
+          salario: 3350.25,
+        },
+      ];
+
+      var count = 0;
+
+      var totalPessoas = data.length;
+      var totalFeminino;
+      var totalMasculino;
+      var totalSalario;
+      var totalSalarioFeminino;
+      var totalSalarioMasculino;
+
+      console.log("Total de pessoas: " + totalPessoas);
+
+      data.filter(function (pessoa) {
+        if (pessoa.sexo === "F") {
+          count++;
+        }
+        totalFeminino = count;
+      });
+
+      console.log("Total de pessoas do sexo feminino: " + totalFeminino);
+      count = 0;
+
+      data.forEach((salario) => {
+        count += salario.salario;
+      });
+      totalSalario = count;
+      console.log(
+        `Soma total do salário de todas as pessoas: R$${totalSalario.toFixed(
+          2
+        )}`
+      );
+      count = 0;
+
+      console.log(
+        `Média do salário de todas as pessoas: R$${(
+          totalSalario / totalPessoas
+        ).toFixed(2)}`
+      );
+
+      data.filter(function (pessoa) {
+        if (pessoa.sexo === "M") {
+          count += pessoa.salario;
+        }
+      });
+      totalSalarioMasculino = count;
+      count = 0;
+
+      console.log(
+        `Soma total do salário de todas as pessoas do sexo masculino: R$${totalSalarioMasculino.toFixed(
+          2
+        )}`
+      );
+
+      data.filter(function (pessoa) {
+        if (pessoa.sexo === "M") {
+          count++;
+        }
+        totalMasculino = count;
+      });
+      count = 0;
+
+      console.log(
+        `Média do salário de todas as pessoas do sexo masculino: R$${(
+          totalSalarioMasculino / totalMasculino
+        ).toFixed(2)}`
+      );
+
+      console.log(data.some((pessoa) => pessoa.salario > 7000));
+
+      const evaTridade = data.findIndex(
+        (pessoa) => pessoa.nome === "Eva Trindade"
+      );
+      console.log(evaTridade);
+
+      const pessoasComSobrenomeSilva = data.filter((pessoa) => {
+        const sobrenome = pessoa.nome.split(" ")[1];
+        return sobrenome === "Silva";
+      });
+      console.log(pessoasComSobrenomeSilva);
+
+      console.log(data.map((pessoa) => pessoa.nome));
+    </script>
+  </body>
+</html>
